@@ -1,0 +1,43 @@
+﻿<Window x:Class="SensorInstaller.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SensorInstaller"
+        mc:Ignorable="d"
+        Title="感測器安裝精靈" Height="350" Width="525">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="16*"/>
+            <ColumnDefinition Width="550*"/>
+        </Grid.ColumnDefinitions>
+        <Button x:Name="button1" Content="產生原始檔" Grid.Column="1" HorizontalAlignment="Left" Margin="0,224,0,0" VerticalAlignment="Top" Width="80" Height="40" RenderTransformOrigin="0.438,-0.5" Click="button1_Click"/>
+        <Button x:Name="button2" Content="產生二進檔" Grid.Column="1" HorizontalAlignment="Left" Margin="139,224,0,0" VerticalAlignment="Top" Width="80" Height="40" Click="button2_Click"/>
+        <Button x:Name="button3" Content="燒錄" Grid.Column="1" HorizontalAlignment="Left" Margin="278,224,0,0" VerticalAlignment="Top" Width="80" Height="40" Click="button3_Click"/>
+        <Button x:Name="button4" Content="序列部監控" Grid.Column="1" HorizontalAlignment="Left" Margin="411,224,0,0" VerticalAlignment="Top" Width="80" Height="40" Click="button4_Click"/>
+        <ComboBox x:Name="comboSensorQuantity" Grid.Column="1" HorizontalAlignment="Left" Margin="40,59,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="comboSensorQuantity_SelectionChanged">
+
+            <ComboBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <VirtualizingStackPanel />
+                </ItemsPanelTemplate>
+            </ComboBox.ItemsPanel>
+
+        </ComboBox>
+        <TextBlock x:Name="textSensorQuantity" Grid.Column="1" HorizontalAlignment="Left" Margin="40,31,0,0" TextWrapping="Wrap" Text="感測器數量" VerticalAlignment="Top" FontSize="18"/>
+        <ComboBox x:Name="comboSensor1" Grid.Column="1" HorizontalAlignment="Left" Margin="59,119,0,0" VerticalAlignment="Top" Width="80" IsEnabled="False"/>
+        <ComboBox x:Name="comboSensor2" Grid.Column="1" HorizontalAlignment="Left" Margin="209,119,0,0" VerticalAlignment="Top" Width="80" IsEnabled="False"/>
+        <ComboBox x:Name="comboSensor3" Grid.Column="1" HorizontalAlignment="Left" Margin="358,119,0,0" VerticalAlignment="Top" Width="80" IsEnabled="False"/>
+        <ComboBox x:Name="comboSensor4" Grid.Column="1" HorizontalAlignment="Left" Margin="59,154,0,0" VerticalAlignment="Top" Width="80" IsEnabled="False"/>
+        <ComboBox x:Name="comboSensor5" Grid.Column="1" HorizontalAlignment="Left" Margin="209,154,0,0" VerticalAlignment="Top" Width="80" IsEnabled="False"/>
+        <ComboBox x:Name="comboSensor6" Grid.Column="1" HorizontalAlignment="Left" Margin="358,154,0,0" VerticalAlignment="Top" Width="80" IsEnabled="False"/>
+        <TextBlock x:Name="textType" Grid.Column="1" HorizontalAlignment="Left" Margin="40,91,0,0" TextWrapping="Wrap" Text="感測器種類" VerticalAlignment="Top" FontSize="18"/>
+        <TextBlock x:Name="textSensor1" Grid.Column="1" HorizontalAlignment="Left" Margin="35,119,0,0" TextWrapping="Wrap" Text="一號" VerticalAlignment="Top"/>
+        <TextBlock x:Name="textSensor2" Grid.Column="1" HorizontalAlignment="Left" Margin="185,119,0,0" TextWrapping="Wrap" Text="二號" VerticalAlignment="Top"/>
+        <TextBlock x:Name="textSensor3" Grid.Column="1" HorizontalAlignment="Left" Margin="334,119,0,0" TextWrapping="Wrap" Text="三號" VerticalAlignment="Top"/>
+        <TextBlock x:Name="textSensor4" Grid.Column="1" HorizontalAlignment="Left" Margin="35,154,0,0" TextWrapping="Wrap" Text="四號" VerticalAlignment="Top"/>
+        <TextBlock x:Name="textSensor5" Grid.Column="1" HorizontalAlignment="Left" Margin="185,154,0,0" TextWrapping="Wrap" Text="五號" VerticalAlignment="Top"/>
+        <TextBlock x:Name="textSensor6" Grid.Column="1" HorizontalAlignment="Left" Margin="334,154,0,0" TextWrapping="Wrap" Text="六號" VerticalAlignment="Top"/>
+
+    </Grid>
+</Window>
