@@ -17,7 +17,7 @@ void setup()
     sendCommand("AT+CIPSERVER=1,80\r\n", 1000, DEBUG); // turn on server on port 80
     delay(500);
 
-    for (int i = 0; i < 6; i++)
+    for (int i = 0; i < 6; i++) //5個就PIN 7~11，6個就7~12
     {
         int pinNum = i + 7;
         pinMode(pinNum, OUTPUT);
@@ -144,7 +144,7 @@ String sendData(String command, const int timeout, boolean debug)
 {
     String response = "";
     int dataSize = command.length();
-    char data[dataSize];
+	char data[dataSize]; //VS不支援VLA，所以顯示錯誤，但是compiler使用arduino-builder所以沒關係
     command.toCharArray(data, dataSize);
     esp8266.write(data, dataSize); // send the read character to the esp8266
 
@@ -172,6 +172,7 @@ String sendData(String command, const int timeout, boolean debug)
         Serial.print(response);
     }
 
+	delete[] data;
     return response;
 }
 
