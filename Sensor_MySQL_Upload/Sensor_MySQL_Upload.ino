@@ -1,4 +1,3 @@
-#include <ArduinoSTL.h>
 #include <SoftwareSerial.h>
 #define sensor1Pin (14) //moisture
 #define sensor2Pin (15) //moislight
