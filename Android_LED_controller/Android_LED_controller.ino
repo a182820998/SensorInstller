@@ -7,26 +7,6 @@ void setup()
 {
     Serial.begin(9600);
     esp8266.begin(9600);
-    /*pinMode(7, OUTPUT);
-    digitalWrite(7, LOW);
-    pinMode(8, OUTPUT);
-    digitalWrite(8, LOW);
-    pinMode(9, OUTPUT);
-    digitalWrite(9, LOW);
-    pinMode(10, OUTPUT);
-    digitalWrite(10, LOW);
-    pinMode(11, OUTPUT);
-    digitalWrite(11, LOW);
-    pinMode(12, OUTPUT);
-    digitalWrite(12, LOW);
-    pinMode(13, OUTPUT);
-    digitalWrite(13, LOW);
-    pinMode(11, OUTPUT);
-    digitalWrite(11, LOW);
-    pinMode(12, OUTPUT);
-    digitalWrite(12, LOW);
-    pinMode(13, OUTPUT);
-    digitalWrite(13, LOW);*/
     sendCommand("AT+RST\r\n", 2000, DEBUG); // reset module
     sendCommand("AT+CWMODE=1\r\n", 1000, DEBUG); // configure as access point
     /***************************************************************/
@@ -91,7 +71,7 @@ void loop()
                         }
 
                         content = "{" + pinState[0] + "," + pinState[1] + "," + pinState[2] + "," + pinState[3] + "," + pinState[4] + "," + pinState[5] + "}";
-                        delay(300);
+                        delay(100);
                     }
                 }
                 else if (pin.indexOf(",") == -1 && pin.indexOf("%") == 2)
@@ -113,7 +93,7 @@ void loop()
                     }
 
                     content = "{" + pinState[0] + "," + pinState[1] + "," + pinState[2] + "," + pinState[3] + "," + pinState[4] + "," + pinState[5] + "}";
-                    delay(300);
+                    delay(100);
                 }
                 else
                 {
@@ -146,7 +126,7 @@ void loop()
                     }
 
                     content = "{" + pinState[0] + "," + pinState[1] + "," + pinState[2] + "," + pinState[3] + "," + pinState[4] + "," + pinState[5] + "}";
-                    delay(300);
+                    delay(100);
                 }
             }
 
@@ -155,7 +135,7 @@ void loop()
             String closeCommand = "AT+CIPCLOSE=";
             closeCommand += connectionId; // append connection id
             closeCommand += "\r\n";
-            sendCommand(closeCommand, 2000, DEBUG); // close connection
+            sendCommand(closeCommand, 1000, DEBUG); // close connection
         }
     }
 }
@@ -164,7 +144,7 @@ String sendData(String command, const int timeout, boolean debug)
 {
     String response = "";
     int dataSize = command.length();
-    char* data = new char[dataSize];
+    char data[dataSize];
     command.toCharArray(data, dataSize);
     esp8266.write(data, dataSize); // send the read character to the esp8266
 
@@ -192,7 +172,6 @@ String sendData(String command, const int timeout, boolean debug)
         Serial.print(response);
     }
 
-    delete[] data;
     return response;
 }
 
