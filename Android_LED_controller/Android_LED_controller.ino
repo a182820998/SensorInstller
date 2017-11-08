@@ -1,7 +1,7 @@
 #include <SoftwareSerial.h>
 #define DEBUG true
 
-SoftwareSerial esp8266(5, 6);
+SoftwareSerial esp8266(3, 4);
 
 void setup()
 {
