@@ -144,7 +144,7 @@ float moisture(int pin)
 float light(int pin)
 {
     int a = 0;
-	int max = 1000;
+    int max = 1000;
     float b, c, averageLight = 0;
     int range = 1000;
     float A[10];
