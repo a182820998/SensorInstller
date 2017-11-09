@@ -144,6 +144,7 @@ float moisture(int pin)
 float light(int pin)
 {
     int a = 0;
+	int max = 1000;
     float b, c, averageLight = 0;
     int range = 1000;
     float A[10];
@@ -157,7 +158,7 @@ float light(int pin)
     {
         a = analogRead(pin);
         b = range / 100;
-        c = a / b;
+        c = (max - a) / b;
         A[i] = c;
         delay(200); // read once per 0.2 sec
     }
