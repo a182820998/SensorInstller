@@ -144,7 +144,6 @@ float moisture(int pin)
 float light(int pin)
 {
     int a = 0;
-    int max = 1000;
     float b, c, averageLight = 0;
     int range = 1000;
     float A[10];
@@ -158,7 +157,7 @@ float light(int pin)
     {
         a = analogRead(pin);
         b = range / 100;
-        c = (max - a) / b;
+        c = (1000 - a) / b;
         A[i] = c;
         delay(200); // read once per 0.2 sec
     }
@@ -170,7 +169,7 @@ float light(int pin)
 float smoke(int pin)
 {
     int a, b = 0;
-    int mi = 30;
+    int mi = 110;
     int ma = 280;
     int range = ma - mi;
     float averageSmoke = 0;
@@ -179,7 +178,7 @@ float smoke(int pin)
     for (int i = 0; i < 10; i++)
     {
         a = analogRead(pin);
-        b = (a - mi) * 100 / range;
+        b = 100.0 - ((a - mi) * 100 / range);
         A[i] = b;
         delay(200); // read once per 0.2 sec
     }
@@ -202,7 +201,7 @@ float temp(int pin)
 	{
 		a = analogRead(pin);
 		b = (a * 125) >> 8;
-		A[i] = b;
+		A[i] = b / 2;
 		delay(200);
 	}
 	
