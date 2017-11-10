@@ -1,7 +1,7 @@
 #include <SoftwareSerial.h>
 #define DEBUG true
 
-SoftwareSerial esp8266(3, 4);
+SoftwareSerial esp8266(5, 6);
 
 void setup()
 {
@@ -144,7 +144,7 @@ String sendData(String command, const int timeout, boolean debug)
 {
     String response = "";
     int dataSize = command.length();
-	char data[dataSize]; //VS不支援VLA，所以顯示錯誤，但是compiler使用arduino-builder所以沒關係
+    char data[dataSize]; //VS不支援VLA，所以顯示錯誤，但是compiler使用arduino-builder所以沒關係
     command.toCharArray(data, dataSize);
     esp8266.write(data, dataSize); // send the read character to the esp8266
 
@@ -172,7 +172,7 @@ String sendData(String command, const int timeout, boolean debug)
         Serial.print(response);
     }
 
-	delete[] data;
+    delete[] data;
     return response;
 }
 
