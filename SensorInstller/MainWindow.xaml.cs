@@ -88,7 +88,11 @@ namespace SensorInstaller
         {
             try
             {
-                StreamReader reader = new StreamReader(@"C:\Users\user\Documents\Visual Studio 2015\Projects\csharp\SensorInstller\SensorInstller\ArduinoSource\Uploader\Uploader.ino", Encoding.UTF8);
+                StreamReader reader = new StreamReader
+                (
+                    @"C:\Users\user\Documents\Visual Studio 2015\Projects\csharp\SensorInstller\SensorInstller\ArduinoSource\Uploader\Uploader.ino",
+                    Encoding.UTF8
+                );
                 List<string> newSource = new List<string>();
                 string[] floatParameters = new string[typeSetIndexList.Count];
                 string[] sentParameters = new string[typeSetIndexList.Count];
