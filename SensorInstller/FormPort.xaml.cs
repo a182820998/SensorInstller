@@ -39,7 +39,6 @@ namespace SensorInstaller
 
         public virtual void button1ClickEvent()
         {
-
         }
     }
 }

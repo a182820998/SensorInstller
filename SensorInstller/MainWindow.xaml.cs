@@ -50,12 +50,10 @@ namespace SensorInstaller
         private List<string> typeList()
         {
             List<string> list = new List<string>();
-
             list.Add("濕度");
             list.Add("光度");
             list.Add("煙霧");
             list.Add("溫度");
-
             return list;
         }
 
@@ -74,7 +72,7 @@ namespace SensorInstaller
             }
 
             MessageBoxResult result = MessageBox.Show("種類清單 : " + String.Join(" ,", typeSetText.ToArray()) + "\r\n" + "按下確認產生source code",
-                "確認", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                                      "確認", MessageBoxButton.YesNo, MessageBoxImage.Question);
 
             if (result == MessageBoxResult.Yes)
             {
@@ -92,7 +90,6 @@ namespace SensorInstaller
             {
                 StreamReader reader = new StreamReader(@"C:\Users\user\Documents\Visual Studio 2015\Projects\csharp\SensorInstller\SensorInstller\ArduinoSource\Uploader\Uploader.ino", Encoding.UTF8);
                 List<string> newSource = new List<string>();
-
                 string[] floatParameters = new string[typeSetIndexList.Count];
                 string[] sentParameters = new string[typeSetIndexList.Count];
                 string[] sentArgs = new string[typeSetIndexList.Count];
@@ -148,7 +145,6 @@ namespace SensorInstaller
 
                 string source = String.Join("\r\n", newSource.ToArray());
                 reader.Close();
-
                 StreamWriter writer = new StreamWriter(@"C:\SensorInstallerSource\newUploader\newUploader.ino");
                 writer.Write(source);
                 writer.Close();
@@ -162,11 +158,18 @@ namespace SensorInstaller
         private void button2_Click(object sender, RoutedEventArgs e)
         {
             ProcessStartInfo startBuildInit = new ProcessStartInfo();
-            startBuildInit.Arguments = @"-dump-prefs -logger=machine -hardware C:\Arduino\hardware -tools C:\Arduino\tools-builder -tools C:\Arduino\hardware\tools\avr -built-in-libraries C:\Arduino\libraries -libraries C:\Users\user\Documents\Arduino\libraries -fqbn=arduino:avr:uno -ide-version=10805 -build-path C:\SensorInstallerSource\newUploader\BuildPath -warnings=none -prefs=build.warn_data_percentage=75 -prefs=runtime.tools.arduinoOTA.path=C:\Arduino\hardware\tools\avr -prefs=runtime.tools.avr-gcc.path=C:\Arduino\hardware\tools\avr -prefs=runtime.tools.avrdude.path=C:\Arduino\hardware\tools\avr -verbose C:\SensorInstallerSource\newUploader\newUploader.ino";
+            startBuildInit.Arguments = @"-dump-prefs -logger=machine -hardware C:\Arduino\hardware"
+                                       + @" -tools C:\Arduino\tools-builder -tools C:\Arduino\hardware\tools\avr"
+                                       + @" -built-in-libraries C:\Arduino\libraries -libraries C:\Users\user\Documents\Arduino\libraries"
+                                       + @" -fqbn=arduino:avr:uno -ide-version=10805 -build-path C:\SensorInstallerSource\newUploader\BuildPath"
+                                       + @" -warnings=none -prefs=build.warn_data_percentage=75"
+                                       + @" -prefs=runtime.tools.arduinoOTA.path=C:\Arduino\hardware\tools\avr"
+                                       + @" -prefs=runtime.tools.avr-gcc.path=C:\Arduino\hardware\tools\avr"
+                                       + @" -prefs=runtime.tools.avrdude.path=C:\Arduino\hardware\tools\avr"
+                                       + @" -verbose C:\SensorInstallerSource\newUploader\newUploader.ino";
             startBuildInit.FileName = @"C:\Arduino\arduino-builder.exe";
             startBuildInit.WindowStyle = ProcessWindowStyle.Normal;
             startBuildInit.CreateNoWindow = false;
-
             int exitCodeInit;
 
             using (Process proc = Process.Start(startBuildInit))
@@ -183,10 +186,17 @@ namespace SensorInstaller
                 {
                     ProcessStartInfo startBuildHex = new ProcessStartInfo();
                     startBuildHex.FileName = @"C:\Arduino\arduino-builder.exe";
-                    startBuildInit.Arguments = @"-compile -logger=machine -hardware C:\Arduino\hardware -tools C:\Arduino\tools-builder -tools C:\Arduino\hardware\tools\avr -built-in-libraries C:\Arduino\libraries -libraries C:\Users\user\Documents\Arduino\libraries -fqbn=arduino:avr:uno -ide-version=10805 -build-path C:\SensorInstallerSource\newUploader\BuildPath -warnings=none -prefs=build.warn_data_percentage=75 -prefs=runtime.tools.arduinoOTA.path=C:\Arduino\hardware\tools\avr -prefs=runtime.tools.avr-gcc.path=C:\Arduino\hardware\tools\avr -prefs=runtime.tools.avrdude.path=C:\Arduino\hardware\tools\avr -verbose C:\SensorInstallerSource\newUploader\newUploader.ino";
+                    startBuildInit.Arguments = @"-compile -logger=machine -hardware C:\Arduino\hardware"
+                                               + @" -tools C:\Arduino\tools-builder -tools C:\Arduino\hardware\tools\avr"
+                                               + @" -built-in-libraries C:\Arduino\libraries -libraries C:\Users\user\Documents\Arduino\libraries"
+                                               + @" -fqbn=arduino:avr:uno -ide-version=10805 -build-path C:\SensorInstallerSource\newUploader\BuildPath"
+                                               + @" -warnings=none -prefs=build.warn_data_percentage=75"
+                                               + @" -prefs=runtime.tools.arduinoOTA.path=C:\Arduino\hardware\tools\avr"
+                                               + @" -prefs=runtime.tools.avr-gcc.path=C:\Arduino\hardware\tools\avr"
+                                               + @" -prefs=runtime.tools.avrdude.path=C:\Arduino\hardware\tools\avr"
+                                               + @" -verbose C:\SensorInstallerSource\newUploader\newUploader.ino";
                     startBuildInit.WindowStyle = ProcessWindowStyle.Normal;
                     startBuildInit.CreateNoWindow = false;
-
                     int exitCodeHex;
 
                     using (Process proc = Process.Start(startBuildInit))

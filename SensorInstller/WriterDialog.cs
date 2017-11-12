@@ -19,10 +19,11 @@ namespace SensorInstaller
             string port = comboPort.Text.ToString();
             ProcessStartInfo start = new ProcessStartInfo();
             start.FileName = @"C:\Arduino\hardware\tools\avr\bin\avrdude.exe";
-            start.Arguments = @"-CC:\Arduino\hardware\tools\avr/etc/avrdude.conf -v -patmega328p -carduino -P" + port + @" -b115200 -D -Uflash:w:C:\SensorInstallerSource\newUploader\BuildPath\newUploader.ino.hex:i";
+            start.Arguments = @"-CC:\Arduino\hardware\tools\avr/etc/avrdude.conf -v -patmega328p -carduino -P"
+                              + port
+                              + @" -b115200 -D -Uflash:w:C:\SensorInstallerSource\newUploader\BuildPath\newUploader.ino.hex:i";
             start.WindowStyle = ProcessWindowStyle.Normal;
             start.CreateNoWindow = false;
-
             int exitCode;
 
             using (Process proc = Process.Start(start))

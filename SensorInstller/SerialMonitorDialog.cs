@@ -20,10 +20,8 @@ namespace SensorInstaller
             ProcessStartInfo start = new ProcessStartInfo();
             start.Arguments = @"-serial " + port + " -sercfg 9600,8,n,1,X";
             start.FileName = @"C:\Program Files\PuTTY\plink.exe";
-
             start.WindowStyle = ProcessWindowStyle.Normal;
             start.CreateNoWindow = false;
-
             int exitCode;
 
             using (Process proc = Process.Start(start))
