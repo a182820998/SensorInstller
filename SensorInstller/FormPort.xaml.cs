@@ -20,6 +20,13 @@ namespace SensorInstaller
     /// </summary>
     public partial class FormPort : Window
     {
+        public interface ButtonFormPortClickListener
+        {
+            void onClick();
+        }
+
+        private ButtonFormPortClickListener _listener;
+
         public FormPort(List<string> portList, string title)
         {
             InitializeComponent();
@@ -27,18 +34,22 @@ namespace SensorInstaller
             this.Title = title;
         }
 
+        public virtual void button1ClickEvent(){}
+
+        public void setFormPortClickListener(ButtonFormPortClickListener listener)
+        {
+            _listener = listener;
+        }
+
         private void button1_Click(object sender, RoutedEventArgs e)
         {
+            //_listener.onClick();
             button1ClickEvent();
         }
 
         private void button2_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
-        }
-
-        public virtual void button1ClickEvent()
-        {
         }
     }
 }

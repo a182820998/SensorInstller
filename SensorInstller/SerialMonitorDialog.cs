@@ -10,9 +10,7 @@ namespace SensorInstaller
 {
     class SerialMonitorDialog : FormPort
     {
-        public SerialMonitorDialog(List<string> portList, string title) : base(portList, title)
-        {
-        }
+        public SerialMonitorDialog(List<string> portList, string title) : base(portList, title){}
 
         public override void button1ClickEvent()
         {

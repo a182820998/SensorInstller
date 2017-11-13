@@ -10,9 +10,7 @@ namespace SensorInstaller
 {
     class WriterDialog : FormPort
     {
-        public WriterDialog(List<string> portList, string title) : base(portList, title)
-        {
-        }
+        public WriterDialog(List<string> portList, string title) : base(portList, title){}
 
         public override void button1ClickEvent()
         {
